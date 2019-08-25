@@ -18,6 +18,7 @@ export class ApiService {
     return  throwError(error.error);
   }
 
+  // get request builder service
   get(path: string, params?: { employeeId: string }): Observable<any> {
     return this.http.get(`${environment.api_url}${path}`, { params })
       .pipe(catchError(this.formatErrors));

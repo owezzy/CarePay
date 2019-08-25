@@ -26,9 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // build reactive form
     this.buildLoginForm();
   }
 
+  // get user input data and validate
   buildLoginForm() {
     this.loginForm = this.formBuilder.group({
       username: ['', EmailValidation],
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  // login action runs asyc
   async login(submittedForm: FormGroup) {
     this.authenticationService
       .login(submittedForm.value.username, submittedForm.value.password)

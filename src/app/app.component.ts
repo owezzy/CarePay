@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // collect app authStatus state when app starts running
     this.authenticationService.authStatus.subscribe(
       authStatus => setTimeout(() => {
         this._displayAccountsIcons = authStatus.isAuthenticated;
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     );
   }
 
+  // icon display flag using authStatus
   get displayAccountIcons() {
     return this._displayAccountsIcons;
   }

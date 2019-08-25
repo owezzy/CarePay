@@ -18,7 +18,7 @@ export class UiService {
   showToast(message: string, action = 'Close', config?: MatSnackBarConfig) {
     this.snackBar.open(
       message, action, config || {
-      duration: 7000,
+      duration: 5000,
     },
     );
   }

@@ -17,6 +17,7 @@ export class ProvidersComponent  {
 
   constructor(private apiService: ApiService, private authService: AuthenticationService) { }
 
+  // get providers from server
     providers$ = this.apiService.get('providers', {employeeId: this.userId}).pipe(
       tap(data => console.log('Providers: ', JSON.stringify(data))),
       catchError(transformError));

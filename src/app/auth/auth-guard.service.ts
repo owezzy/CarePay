@@ -20,10 +20,12 @@ export class AuthGuard implements CanActivate {
     );
   }
 
+  // guard protected component
   canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
     return this.checkLogin();
   }
 
+  // guard protected routes
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
@@ -36,6 +38,7 @@ export class AuthGuard implements CanActivate {
     return this.checkLogin(childRoute);
   }
 
+  // check user if has token to access protected route
   protected checkLogin(route?: ActivatedRouteSnapshot) {
     let params: any;
     if (route) {
@@ -48,6 +51,7 @@ export class AuthGuard implements CanActivate {
     }
     return true;
   }
+  // alert user using toast
   private showAlert(isAuth: boolean) {
     if (!isAuth) {
       this.uiService.showToast('You must login to continue');

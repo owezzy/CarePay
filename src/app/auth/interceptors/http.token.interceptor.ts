@@ -13,6 +13,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
   constructor(private jwtService: AuthenticationService, private router: Router) {
   }
 
+  // add token header to all outgoing requests
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = this.jwtService.getToken();
