@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../auth/api.service';
+import {ApiService} from '../shared/api.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {AuthenticationService} from '../auth/authentication.service';
 import {catchError, tap} from 'rxjs/operators';
@@ -15,7 +15,6 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./providers.component.css']
 })
 export class ProvidersComponent implements OnInit {
-  userId = this.authService.authStatus.value.userId.toString();
   providers: Observable<ProvidersModelInterface[]>;
 
   constructor(
@@ -26,9 +25,8 @@ export class ProvidersComponent implements OnInit {
     // get providers from service
   }
 
-  params = new  HttpParams().set('employee', this.userId);
 
   ngOnInit() {
-    this.apiService.loadProviders( '/providers', this.params);
+    this.apiService.GetProviders(this.route, this.authService.authStatus.value.userId);
   }
 }
